@@ -42,9 +42,9 @@ inquirer
         },
     ])
     .then((response) => {
-        console.log("Creating README file...");
-        
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+        fs.writeFile("README.json", JSON.stringify(response), (err) =>
+            err ? console.log(err) : console.log('Creating README file...')
+        );
+        console.log(response);
+    
+    });
