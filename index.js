@@ -42,7 +42,7 @@ inquirer
         },
     ])
     .then((response) => {
-        fs.writeFile("README.json", JSON.stringify(response), (err) =>
+        fs.writeFile("README.json", JSON.stringify(response, null, '\t'), (err) =>
             err ? console.log(err) : console.log('Creating README file...')
         );
         console.log(response);
