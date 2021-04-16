@@ -67,36 +67,36 @@ const writeToFile = (answers) =>
 ${answers.description}
 
 ## Table of Contents
-- <a href="#">Installation<a>
-- <a href="#">Usage<a>
-- <a href="#">Collaborators<a>
-- <a href="#">GitHub Profile<a>
-- <a href="#">Email For Contact<a>
-- <a href="#">License<a>
+- <a href="#inst">Installation<a>
+- <a href="#use">Usage<a>
+- <a href="#collab">Collaborators<a>
+- <a href="#git">GitHub Profile<a>
+- <a href="#email">Email For Contact<a>
+- <a href="#lic">License<a>
     
-## Installation
+## <h1 id="inst">Installation<h1>
     
 ${answers.install}
 
-## Usage
+## <h1 id="use">Usage<h1>
     
 ${answers.usage}
 
-## Collaborators
+## <h1 id="collab">Collaborators<h1>
 
 ${answers.credits}
 
-## GitHub Profile
+## <h1 id="git">GitHub Profile<h1>
 
 https://github.com/${answers.github}
 
-## Email For Contact
+## <h1 id="email">Email For Contact<h1>
 
 ${answers.email}
 
-## License
+## <h1 id="lic">License<h1>
 
-${answers.license}
+This application is covered under the ${answers.license} license
 [![License: ${answers.license}]${generateLicense(answers.license)}
     `;
 
