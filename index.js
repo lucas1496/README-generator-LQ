@@ -96,6 +96,7 @@ ${answers.email}
 
 ## License
 
+${answers.license}
 [![License: ${answers.license}]${generateLicense(answers.license)}
     `;
 
