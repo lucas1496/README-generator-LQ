@@ -64,7 +64,7 @@ const writeToFile = (answers) =>
     
 ## Description
     
-${answers.description}
+- ${answers.description}
 
 ## Table of Contents
 - <a href="#inst">Installation<a>
@@ -76,27 +76,27 @@ ${answers.description}
     
 ## <h1 id="inst">Installation<h1>
     
-${answers.install}
+- ${answers.install}
 
 ## <h1 id="use">Usage<h1>
     
-${answers.usage}
+- ${answers.usage}
 
 ## <h1 id="collab">Collaborators<h1>
 
-${answers.credits}
+- ${answers.credits}
 
 ## <h1 id="git">GitHub Profile<h1>
 
-https://github.com/${answers.github}
+- https://github.com/${answers.github}
 
 ## <h1 id="email">Email For Contact<h1>
 
-${answers.email}
+- ${answers.email}
 
 ## <h1 id="lic">License<h1>
 
-This application is covered under the ${answers.license} license
+- This application is covered under the ${answers.license} license
 [![License: ${answers.license}]${generateLicense(answers.license)}
     `;
 
