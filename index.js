@@ -1,20 +1,14 @@
 // Declaring packages needed for this application as constants
 const fs = require('fs');
 const inquirer = require('inquirer');
-// TODO: Create an array of questions for user input
-// const questions = [];
+const util = require('util');
+const generateLicense = require('./utils/generateLicense.js');
 
-// TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
+const writeFileAsync = util.promisify(fs.writeFile);
 
-// TODO: Create a function to initialize app
-// function init() {}
-
-// Function call to initialize app
-// init();
-
-inquirer
-    .prompt([
+// Inquirer with questions for user input
+const userQuestions = () => {
+    return inquirer.prompt([
         {
             type: "input",
             message: "What is the title of your project?",
@@ -32,6 +26,16 @@ inquirer
         },
         {
             type: "input",
+            message: "Enter usage information for your project:",
+            name: "usage"
+        },
+        {
+            type: "input",
+            message: "Who are the collaborators of this projects?",
+            name: "credits"
+        },
+        {
+            type: "input",
             message: "Enter your GitHub Username:",
             name: "github"
         },
@@ -40,11 +44,71 @@ inquirer
             message: "Enter your email address:",
             name: "email"
         },
+        {
+            type: "list",
+            message: "Which license does this project fall under?",
+            name: "license",
+            choices: [
+                "MIT",
+                "ISC",
+                "EPL",
+                "Apache 2.0",
+            ]
+        }
     ])
-    .then((response) => {
-        fs.writeFile("README.json", JSON.stringify(response, null, '\t'), (err) =>
-            err ? console.log(err) : console.log('Creating README file...')
-        );
-        console.log(response);
+}
+
+// Creates README file
+const writeToFile = (answers) =>
+    `# ${answers.title}
     
-    });
+## Description
+    
+${answers.description}
+
+## Table of Contents
+- <a href="#">Installation<a>
+- <a href="#">Usage<a>
+- <a href="#">Collaborators<a>
+- <a href="#">GitHub Profile<a>
+- <a href="#">Email For Contact<a>
+- <a href="#">License<a>
+    
+## Installation
+    
+${answers.installation}
+
+## Usage
+    
+${answers.usage}
+
+## Collaborators
+
+${answers.credits}
+
+## GitHub Profile
+
+https://github.com/${answers.github}
+
+## Email For Contact
+
+${answers.email}
+
+## License
+
+[![License: ${answers.license}]${generateLicense(answers.license)}
+    `;
+
+
+// Function to initialize app
+const init = () => {
+    userQuestions()
+      .then((answers) => writeFileAsync('README.md', writeToFile(answers)))
+      .then(() => console.log('Generating README file...'))
+      .catch((err) => console.error(err));
+  };
+
+// Function call to initialize app
+init();
+
+
