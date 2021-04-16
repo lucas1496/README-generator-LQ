@@ -76,7 +76,7 @@ ${answers.description}
     
 ## Installation
     
-${answers.installation}
+${answers.install}
 
 ## Usage
     
